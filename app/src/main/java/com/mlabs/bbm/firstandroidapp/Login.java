@@ -39,6 +39,7 @@ public class Login extends AppCompatActivity {
         loginDataBaseAdapter = loginDataBaseAdapter.open();
         log_in = (Button) findViewById(R.id.log_in);
         btshowpass = (Button) findViewById(R.id.btshowpass);
+        editText_user.requestFocus();
 
         btshowpass.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -79,10 +80,16 @@ public class Login extends AppCompatActivity {
             Toast.makeText(Login.this, "Hello! Welcome", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
+            editText_user.setText("");
+            editText_password.setText("");
+            editText_user.requestFocus();
         } else if (pw.equals(emailt)) {
             Toast.makeText(Login.this, "Hello! Welcome", Toast.LENGTH_LONG).show();
             Intent intent  = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
+            editText_user.setText("");
+            editText_password.setText("");
+            editText_user.requestFocus();
         } else {
             if (email.equals("") && pw.equals("")) {
                 Toast.makeText(getApplicationContext(), "Please fill out all the field.", Toast.LENGTH_LONG).show();
@@ -120,6 +127,15 @@ public class Login extends AppCompatActivity {
     public void SignUp(View v){
         Intent intent = new Intent(this, SignUp.class);
         startActivity(intent);
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+        startActivity(intent);
+        finish();
+        System.exit(0);
     }
 }
 

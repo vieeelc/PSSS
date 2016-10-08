@@ -122,4 +122,15 @@ public class SignUp extends AppCompatActivity{
         super.onDestroy();
         loginDatabaseAdapter.close();
     }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
+/*        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);/*//***Change Here****/
+//        startActivity(intent);
+        finish();
+        System.exit(0);
+    }
 }
